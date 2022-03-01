@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "f1-champions": "apps/f1-champions",
+    "f1-champions-e2e": "apps/f1-champions-e2e"
+  }
+}

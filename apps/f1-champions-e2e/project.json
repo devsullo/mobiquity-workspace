@@ -1,0 +1,28 @@
+{
+  "root": "apps/f1-champions-e2e",
+  "sourceRoot": "apps/f1-champions-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/f1-champions-e2e/cypress.json",
+        "devServerTarget": "f1-champions:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "f1-champions:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/f1-champions-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["f1-champions"]
+}
