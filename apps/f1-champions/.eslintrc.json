@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "mobiquity-workspace",
+            "prefix": "f1-champions",
             "style": "kebab-case"
           }
         ]
