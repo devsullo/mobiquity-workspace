@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ErgastApiService } from './services/api.service';
+import { ErgastApiService } from './services/ergast-api.service';
 
 export interface Environment {
   apiUrl: string;

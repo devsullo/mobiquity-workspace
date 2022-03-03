@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mobiquity-workspace/ergast": ["libs/ergast/src/index.ts"],
+      "@mobiquity-workspace/ergast": ["libs/ergast/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

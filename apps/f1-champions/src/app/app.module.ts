@@ -13,7 +13,9 @@ import { environment } from '../environments/environment';
     BrowserModule,
     CommonModule,
     AppRoutingModule,
-    ErgastModule.forRoot({ apiUrl: environment.ergastApiUrl }),
+    ErgastModule.forRoot({
+      apiUrl: environment.ergastApiUrl,
+    }),
   ],
   providers: [],
   bootstrap: [F1ChampionsRootComponent],

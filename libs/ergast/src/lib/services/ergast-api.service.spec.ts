@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ErgastApiService } from './api.service';
+import { ErgastApiService } from './ergast-api.service';
 
-describe('ApiService', () => {
+describe('ErgastApiService', () => {
   let service: ErgastApiService;
 
   beforeEach(() => {
