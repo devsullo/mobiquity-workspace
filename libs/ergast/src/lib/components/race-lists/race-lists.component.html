@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let race of races | async">
+    {{race.data.raceName}} |
+    {{race.driver.familyName }} |
+    {{race.time.time}}
+  </li>
+</ul>

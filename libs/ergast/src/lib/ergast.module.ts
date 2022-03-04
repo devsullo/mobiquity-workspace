@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErgastApiService } from './services/ergast-api.service';
 import { StandingsListsComponent } from './components/standings-lists/standings-lists.component';
 import { RouterModule } from '@angular/router';
+import { RaceListsComponent } from './components/race-lists/race-lists.component';
 
 export interface Environment {
   apiUrl: string;
@@ -11,8 +12,8 @@ export interface Environment {
 
 @NgModule({
   imports: [CommonModule, HttpClientModule, RouterModule],
-  declarations: [StandingsListsComponent],
-  exports: [StandingsListsComponent],
+  declarations: [StandingsListsComponent, RaceListsComponent],
+  exports: [StandingsListsComponent, RaceListsComponent],
 })
 export class ErgastModule {
   public static forRoot(environment: Environment) {
