@@ -9,13 +9,15 @@ interface DriverStandings {
   Constructors: Constructor[];
 }
 
+export interface StandingsLists {
+  season: string;
+  round: string;
+  DriverStandings: DriverStandings[];
+}
+
 export interface StandingsTable extends MRData {
   StandingsTable: {
     driverStandings: string;
-    StandingsLists: {
-      season: string;
-      round: string;
-      DriverStandings: DriverStandings[];
-    }[];
+    StandingsLists: StandingsLists[];
   };
 }
