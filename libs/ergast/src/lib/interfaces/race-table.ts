@@ -1,6 +1,21 @@
 import { Constructor, Driver, MRData } from '.';
 
-interface RaceResult {
+export interface Time {
+  millis: string;
+  time: string;
+}
+export interface FastestLap {
+  rank: string;
+  lap: string;
+  Time: {
+    time: string;
+  };
+  AverageSpeed: {
+    units: string;
+    speed: string;
+  };
+}
+export interface RaceResult {
   number: string;
   position: string;
   positionText: string;
@@ -10,21 +25,8 @@ interface RaceResult {
   grid: string;
   laps: string;
   status: string;
-  Time: {
-    millis: string;
-    time: string;
-  };
-  FastestLap: {
-    rank: string;
-    lap: string;
-    Time: {
-      time: string;
-    };
-    AverageSpeed: {
-      units: string;
-      speed: string;
-    };
-  };
+  Time: Time;
+  FastestLap: FastestLap;
 }
 
 interface Circuit {
@@ -50,7 +52,9 @@ export interface Race {
 }
 
 export interface RaceTable extends MRData {
-  season: string;
-  position: string;
-  Races: Race[];
+  RaceTable: {
+    season: string;
+    position: string;
+    Races: Race[];
+  };
 }
