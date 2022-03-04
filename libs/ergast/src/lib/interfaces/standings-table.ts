@@ -1,6 +1,6 @@
 import { Constructor, Driver, MRData } from '.';
 
-interface DriverStandings {
+export interface DriverStandings {
   position: string;
   positionText: string;
   points: string;

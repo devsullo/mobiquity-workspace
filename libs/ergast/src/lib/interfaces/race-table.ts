@@ -38,8 +38,7 @@ interface Circuit {
     country: string;
   };
 }
-
-interface Races {
+export interface Race {
   season: string;
   round: string;
   url: string;
@@ -53,5 +52,5 @@ interface Races {
 export interface RaceTable extends MRData {
   season: string;
   position: string;
-  Races: Races[];
+  Races: Race[];
 }

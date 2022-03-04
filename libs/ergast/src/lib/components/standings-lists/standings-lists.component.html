@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let firstStanding of firstStandings | async">
+    <a [routerLink]="['/winners-of-year', firstStanding.season]">
+      {{ firstStanding.season }}
+      {{ firstStanding.driver.givenName }}
+      {{ firstStanding.driverConstructor.name }}
+    </a>
+  </li>
+</ul>
