@@ -1026,7 +1026,7 @@ export const countries = [
     alpha_2_code: 'MC',
     alpha_3_code: 'MCO',
     en_short_name: 'Monaco',
-    nationality: 'Mon\u00e9gasque, Monacan',
+    nationality: 'Mon\u00e9gasque, Monacan, Monegasque',
   },
   {
     num_code: '496',
