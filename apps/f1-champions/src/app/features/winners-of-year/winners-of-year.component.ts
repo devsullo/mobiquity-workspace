@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ErgastApiService, SingleRace } from '@mobiquity-workspace/ergast';
 import { map, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'f1-champions-winners-of-year',
@@ -10,15 +11,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WinnersOfYearComponent implements OnInit {
   public races?: Observable<SingleRace[]>;
+  public year?: string;
   constructor(
     private ergastApiService: ErgastApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public location: Location
   ) {}
 
   ngOnInit(): void {
-    const year = this.route.snapshot.paramMap.get('year') || '';
+    this.year = this.route.snapshot.paramMap.get('year') || '';
     this.races = this.ergastApiService
-      .getRaceWinnersByYear(year)
+      .getRaceWinnersByYear(this.year)
       .pipe(map((r) => r.RaceTable.Races.map((race) => new SingleRace(race))));
   }
 }

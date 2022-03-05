@@ -1,9 +1,28 @@
-<ul>
-  <li *ngFor="let firstStanding of firstStandings | async">
-    <a [routerLink]="['/winners-of-year', firstStanding.season]">
-      {{ firstStanding.season }}
-      {{ firstStanding.driver.givenName }}
-      {{ firstStanding.driverConstructor.name }}
-    </a>
-  </li>
-</ul>
+<ng-container *ngIf="firstStandings | async as firstStanding">
+  <p-table
+    [value]="firstStanding"
+    [showCurrentPageReport]="true"
+    responsiveLayout="scroll"
+    styleClass="p-datatable-striped"
+    [scrollable]="true"
+    [rowHover]="true"
+  >
+    <ng-template pTemplate="body" let-firstStanding>
+      <tr class="cursor-pointer" (click)="onClick(firstStanding.season)">
+        <td>{{ firstStanding.season }}</td>
+        <td>
+          <mobiquity-workspace-flag
+            [driver]="firstStanding.driver"
+          ></mobiquity-workspace-flag>
+          {{ firstStanding.driverFullName }}
+        </td>
+        <td class="justify-content-end">
+          {{ firstStanding.driverConstructor.name }}
+          <mobiquity-workspace-constructor
+            [driverConstructor]="firstStanding.driverConstructor"
+          ></mobiquity-workspace-constructor>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>

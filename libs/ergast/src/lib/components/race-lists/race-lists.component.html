@@ -1,7 +1,66 @@
-<ul>
-  <li *ngFor="let race of races | async">
-    {{race.data.raceName}} |
-    {{race.driver.familyName }} |
-    {{race.time.time}}
-  </li>
-</ul>
+<ng-container *ngIf="races | async as races">
+  <p-table
+    [value]="races"
+    responsiveLayout="scroll"
+    styleClass="p-datatable-striped"
+    [scrollable]="true"
+    [scrollHeight]="scrollHeight + 'px'"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="data.raceName">
+          Race Name <p-sortIcon field="data.raceName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="data.date">
+          Date <p-sortIcon field="data.date"></p-sortIcon>
+        </th>
+        <th pSortableColumn="driverFullName">
+          Winner <p-sortIcon field="driverFullName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="results.laps">
+          Laps <p-sortIcon field="results.laps"></p-sortIcon>
+        </th>
+        <th pSortableColumn="results.points">
+          Points <p-sortIcon field="results.points"></p-sortIcon>
+        </th>
+        <th pSortableColumn="time">
+          Time <p-sortIcon field="time"></p-sortIcon>
+        </th>
+        <th
+          class="justify-content-end"
+          pSortableColumn="driverConstructor.name"
+        >
+          Constructor <p-sortIcon field="driverConstructor.name"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-race>
+      <tr>
+        <td>{{ race.data.raceName }}</td>
+        <td>{{ race.data.date | date: 'MM/dd/yyyy' }}</td>
+        <td>
+          <mobiquity-workspace-flag
+            [driver]="race.driver"
+          ></mobiquity-workspace-flag>
+          {{ race.driverFullName }}
+        </td>
+        <td>{{ race.results.laps }}</td>
+        <td>{{ race.results.points }}</td>
+        <td>{{ race.time }}</td>
+        <td class="justify-content-end">
+          {{ race.driverConstructor.name }}
+          <mobiquity-workspace-constructor
+            [driverConstructor]="race.driverConstructor"
+          ></mobiquity-workspace-constructor>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody" let-columns="columns">
+      <tr style="height: 34px">
+        <td *ngFor="let col of columns">
+          <p-skeleton [ngStyle]="{ width: '100%' }"></p-skeleton>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>

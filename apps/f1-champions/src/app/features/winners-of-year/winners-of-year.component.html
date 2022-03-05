@@ -1,1 +1,18 @@
-<mobiquity-workspace-race-lists [races]="races"></mobiquity-workspace-race-lists>
+<div class="page-wrapper">
+  <mobiquity-workspace-header
+    title="Race Winners {{ year }}"
+  ></mobiquity-workspace-header>
+  <button
+    pButton
+    class="btn btn-primary p-button-outlined btn-back"
+    type="button"
+    icon="pi pi-arrow-left"
+    iconPos="left"
+    label="Back"
+    (click)="location.back()"
+  ></button>
+  <mobiquity-workspace-race-lists
+    [races]="races"
+    excludeScrollHeightEl="mobiquity-workspace-header header"
+  ></mobiquity-workspace-race-lists>
+</div>

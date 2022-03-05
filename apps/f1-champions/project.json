@@ -16,9 +16,21 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/f1-champions/src/favicon.ico",
-          "apps/f1-champions/src/assets"
+          "apps/f1-champions/src/assets",
+          {
+            "input": "libs/core/src/assets",
+            "glob": "**/*",
+            "output": "assets"
+          }
         ],
-        "styles": ["apps/f1-champions/src/styles.scss"],
+        "styles": [
+          "apps/f1-champions/src/styles.scss",
+          "node_modules/primeng/resources/themes/saga-blue/theme.css",
+          "node_modules/primeng/resources/primeng.min.css",
+          "node_modules/primeflex/primeflex.css",
+          "node_modules/primeicons/primeicons.css",
+          "node_modules/flag-icon-css/css/flag-icons.min.css"
+        ],
         "scripts": []
       },
       "configurations": {

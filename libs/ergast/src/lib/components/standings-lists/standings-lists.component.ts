@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   Input,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FirstStanding } from '../../models';
 
@@ -15,7 +16,11 @@ import { FirstStanding } from '../../models';
 })
 export class StandingsListsComponent implements OnInit {
   @Input() firstStandings?: Observable<FirstStanding[]>;
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  onClick(year: string) {
+    this.router.navigate(['winners-of-year', year]);
+  }
 }
