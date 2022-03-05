@@ -1,6 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ErgastApiService, SingleRace } from '@mobiquity-workspace/ergast';
-import { map, Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import {
+  ErgastApiService,
+  SingleRace,
+  FirstStanding,
+  RaceListsDataType,
+} from '@mobiquity-workspace/ergast';
+import { forkJoin, map } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -10,8 +15,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./winners-of-year.component.scss'],
 })
 export class WinnersOfYearComponent implements OnInit {
-  public races?: Observable<SingleRace[]>;
-  public year?: string;
+  public data?: RaceListsDataType;
+  public year = '';
   constructor(
     private ergastApiService: ErgastApiService,
     private route: ActivatedRoute,
@@ -20,8 +25,26 @@ export class WinnersOfYearComponent implements OnInit {
 
   ngOnInit(): void {
     this.year = this.route.snapshot.paramMap.get('year') || '';
-    this.races = this.ergastApiService
+    this.getRacesAndWinner();
+  }
+
+  getRacesAndWinner() {
+    // Using forkJoin to join 2 observables and return object
+    const races = this.ergastApiService
       .getRaceWinnersByYear(this.year)
       .pipe(map((r) => r.RaceTable.Races.map((race) => new SingleRace(race))));
+
+    const raceWinner = this.ergastApiService
+      .getYearWinner(this.year)
+      .pipe(
+        map((r) =>
+          r.StandingsTable.StandingsLists.map((s) => new FirstStanding(s))
+        )
+      );
+
+    this.data = forkJoin({
+      races,
+      raceWinner,
+    });
   }
 }

@@ -7,7 +7,13 @@ import {
   OnInit,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SingleRace } from '../../models';
+import { FirstStanding, SingleRace } from '../../models';
+interface RaceListsData {
+  races: SingleRace[];
+  raceWinner: FirstStanding[];
+}
+
+export type RaceListsDataType = Observable<RaceListsData>;
 
 @Component({
   selector: 'mobiquity-workspace-race-lists',
@@ -16,7 +22,7 @@ import { SingleRace } from '../../models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RaceListsComponent implements OnInit, AfterViewInit {
-  @Input() races?: Observable<SingleRace[]>;
+  @Input() data?: RaceListsDataType;
   @Input() excludeScrollHeightEl = '';
   public scrollHeight = 0;
 

@@ -1,9 +1,9 @@
 <ng-template #loading>
   <mobiquity-workspace-loader></mobiquity-workspace-loader>
 </ng-template>
-<ng-container *ngIf="races | async as races; else loading">
+<ng-container *ngIf="data | async as data; else loading">
   <p-table
-    [value]="races"
+    [value]="data.races"
     responsiveLayout="scroll"
     styleClass="p-datatable-striped"
     [scrollable]="true"
@@ -38,7 +38,11 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-race>
-      <tr>
+      <tr
+        [ngClass]="{
+          'h-row': data.raceWinner[0].driver.driverId === race.driver.driverId
+        }"
+      >
         <td>{{ race.data.raceName }}</td>
         <td>{{ race.data.date | date: 'MM/dd/yyyy' }}</td>
         <td>
@@ -55,13 +59,6 @@
           <mobiquity-workspace-constructor
             [driverConstructor]="race.driverConstructor"
           ></mobiquity-workspace-constructor>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="loadingbody" let-columns="columns">
-      <tr style="height: 34px">
-        <td *ngFor="let col of columns">
-          <p-skeleton [ngStyle]="{ width: '100%' }"></p-skeleton>
         </td>
       </tr>
     </ng-template>

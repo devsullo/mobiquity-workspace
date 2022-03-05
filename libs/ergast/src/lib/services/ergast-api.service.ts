@@ -30,4 +30,12 @@ export class ErgastApiService {
       )
       .pipe(map((response) => response.MRData));
   }
+
+  getYearWinner(year: string): Observable<StandingsTable> {
+    return this.http
+      .get<ErgastGetResponse<StandingsTable>>(
+        `${this.env.apiUrl}/${year}/driverstandings/1.json`
+      )
+      .pipe(map((response) => response.MRData));
+  }
 }
