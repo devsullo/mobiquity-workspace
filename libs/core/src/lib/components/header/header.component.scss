@@ -1,0 +1,14 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:before {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 75px;
+    background: url(../../../assets/images/f1-logo.png);
+    background-size: cover;
+    margin-right: 12px;
+  }
+}
