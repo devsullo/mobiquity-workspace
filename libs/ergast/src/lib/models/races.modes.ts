@@ -4,7 +4,6 @@ import {
   FastestLap,
   Race,
   RaceResult,
-  Time,
 } from '../interfaces';
 
 export class SingleRace {
@@ -25,11 +24,15 @@ export class SingleRace {
     return this.results.Constructor;
   }
 
-  get time(): Time {
-    return this.results.Time;
+  get time(): string {
+    return this.results.Time.time;
   }
 
   get fastestLap(): FastestLap {
     return this.results.FastestLap;
+  }
+
+  get driverFullName(): string {
+    return `${this.driver.givenName} ${this.driver.familyName}`;
   }
 }

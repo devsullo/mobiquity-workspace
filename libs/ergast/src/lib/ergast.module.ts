@@ -5,14 +5,17 @@ import { ErgastApiService } from './services/ergast-api.service';
 import { StandingsListsComponent } from './components/standings-lists/standings-lists.component';
 import { RouterModule } from '@angular/router';
 import { RaceListsComponent } from './components/race-lists/race-lists.component';
+import { TableModule } from 'primeng/table';
+import { FlagComponent } from './components/flag/flag.component';
+import { ConstructorComponent } from './components/constructor/constructor.component';
 
 export interface Environment {
   apiUrl: string;
 }
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule, RouterModule],
-  declarations: [StandingsListsComponent, RaceListsComponent],
+  imports: [CommonModule, HttpClientModule, RouterModule, TableModule],
+  declarations: [StandingsListsComponent, RaceListsComponent, FlagComponent, ConstructorComponent],
   exports: [StandingsListsComponent, RaceListsComponent],
 })
 export class ErgastModule {

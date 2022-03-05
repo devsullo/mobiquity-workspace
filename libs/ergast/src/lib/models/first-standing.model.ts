@@ -26,4 +26,8 @@ export class FirstStanding {
   get driverConstructor(): Constructor {
     return this.standings.Constructors[0];
   }
+
+  get driverFullName(): string {
+    return `${this.driver.givenName} ${this.driver.familyName}`;
+  }
 }

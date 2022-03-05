@@ -1,0 +1,55 @@
+:host {
+  height: 100%;
+  &:before {
+    content: '';
+    background-color: #8a8a8a;
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 10px;
+    margin-left: 10px;
+  }
+  &.mercedes:before {
+    background-color: #00d2be;
+  }
+
+  &.ferrari:before {
+    background-color: #dc0000;
+  }
+
+  &.mclaren:before {
+    background-color: #ff9800;
+  }
+
+  &.red_bull:before {
+    background-color: #0600ef;
+  }
+
+  &.aston_martin:before {
+    background-color: #006f62;
+  }
+
+  &.racing_point:before {
+    background-color: #f596c8;
+  }
+
+  &.alphatauri:before {
+    background-color: #2b4562;
+  }
+
+  &.renault:before {
+    background-color: #fff500;
+  }
+
+  &.alpine:before {
+    background-color: #0090ff;
+  }
+
+  &.alfa:before {
+    background-color: #900000;
+  }
+
+  &.williams:before {
+    background-color: #005aff;
+  }
+}
