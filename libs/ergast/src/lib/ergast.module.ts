@@ -8,6 +8,7 @@ import { RaceListsComponent } from './components/race-lists/race-lists.component
 import { TableModule } from 'primeng/table';
 import { FlagComponent } from './components/flag/flag.component';
 import { ConstructorComponent } from './components/constructor/constructor.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 export interface Environment {
   apiUrl: string;
@@ -15,7 +16,13 @@ export interface Environment {
 
 @NgModule({
   imports: [CommonModule, HttpClientModule, RouterModule, TableModule],
-  declarations: [StandingsListsComponent, RaceListsComponent, FlagComponent, ConstructorComponent],
+  declarations: [
+    StandingsListsComponent,
+    RaceListsComponent,
+    FlagComponent,
+    ConstructorComponent,
+    LoaderComponent,
+  ],
   exports: [StandingsListsComponent, RaceListsComponent],
 })
 export class ErgastModule {

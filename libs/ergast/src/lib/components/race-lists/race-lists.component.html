@@ -1,4 +1,7 @@
-<ng-container *ngIf="races | async as races">
+<ng-template #loading>
+  <mobiquity-workspace-loader></mobiquity-workspace-loader>
+</ng-template>
+<ng-container *ngIf="races | async as races; else loading">
   <p-table
     [value]="races"
     responsiveLayout="scroll"

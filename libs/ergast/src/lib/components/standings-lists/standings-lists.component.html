@@ -1,4 +1,7 @@
-<ng-container *ngIf="firstStandings | async as firstStanding">
+<ng-template #loading>
+  <mobiquity-workspace-loader></mobiquity-workspace-loader>
+</ng-template>
+<ng-container *ngIf="firstStandings | async as firstStanding; else loading">
   <p-table
     [value]="firstStanding"
     [showCurrentPageReport]="true"
