@@ -1,6 +1,7 @@
 <ng-template #loading>
   <mobiquity-workspace-loader></mobiquity-workspace-loader>
 </ng-template>
+<h2></h2>
 <ng-container *ngIf="firstStandings | async as firstStanding; else loading">
   <p-table
     [value]="firstStanding"

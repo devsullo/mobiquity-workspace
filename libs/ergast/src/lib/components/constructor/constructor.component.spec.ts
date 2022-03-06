@@ -1,25 +1,34 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
 
 import { ConstructorComponent } from './constructor.component';
 
 describe('ConstructorComponent', () => {
-  let component: ConstructorComponent;
-  let fixture: ComponentFixture<ConstructorComponent>;
+  let spectator: SpectatorHost<ConstructorComponent>;
+  const createHost = createHostFactory(ConstructorComponent);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConstructorComponent ]
-    })
-    .compileComponents();
+      declarations: [ConstructorComponent],
+    }).compileComponents();
+
+    spectator = createHost(
+      `<mobiquity-workspace-constructor [driverConstructor]="constructor"></mobiquity-workspace-constructor>`,
+      {
+        hostProps: {
+          constructor: {
+            constructorId: 'mclaren',
+          },
+        },
+      }
+    );
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ConstructorComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have a constructorId class name', () => {
+    expect(
+      spectator
+        .queryHost('mobiquity-workspace-constructor')
+        ?.classList.contains('mclaren')
+    ).toBe(true);
   });
 });
